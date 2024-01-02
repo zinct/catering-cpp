@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4BC7DCA02B4192FC00025639 /* catering.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BC7DC9F2B4192FC00025639 /* catering.cpp */; };
 		4BD7C6382B2D583A004DFBFE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BD7C6372B2D583A004DFBFE /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4BC7DC9C2B41614800025639 /* catering.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = catering.h; sourceTree = "<group>"; };
+		4BC7DC9F2B4192FC00025639 /* catering.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = catering.cpp; sourceTree = "<group>"; };
 		4BD7C6342B2D583A004DFBFE /* catering */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = catering; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BD7C6372B2D583A004DFBFE /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				4BD7C6372B2D583A004DFBFE /* main.cpp */,
+				4BC7DC9C2B41614800025639 /* catering.h */,
+				4BC7DC9F2B4192FC00025639 /* catering.cpp */,
 			);
 			path = catering;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BD7C6382B2D583A004DFBFE /* main.cpp in Sources */,
+				4BC7DCA02B4192FC00025639 /* catering.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
