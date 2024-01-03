@@ -2,7 +2,7 @@
 //  catering.h
 //  catering
 //
-//  Created by Indra Mahesa on 31/12/23.
+//  Created on 31/12/23.
 //
 
 #ifndef catering_h

@@ -2,7 +2,7 @@
 //  main.cpp
 //  catering
 //
-//  Created by Indra Mahesa on 16/12/23.
+//  Created on 16/12/23.
 //
 
 #include <iostream>
