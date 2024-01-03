@@ -29,6 +29,11 @@ int main() {
         cout << "6. Tampilkan Data Catering" << endl;
         cout << "7. Tampilkan Data Makanan" << endl;
         cout << "8. Tampilkan Data Catering Beserta Makanan" << endl;
+        cout << "9. Tampilkan Makanan Terbanyak yang dijual" << endl;
+        cout << "10. Cari Data Catering" << endl;
+        cout << "11. Cari Data Makanan" << endl;
+        cout << "12. Cari Data Menu Makanan Pada Catering" << endl;
+        cout << "13. Tampilkan jumlah makanan dalam catering" << endl;
         cout << "0. Keluar" << endl;
         cout << "Pilih menu: ";
         cin >> menu;
@@ -107,13 +112,95 @@ int main() {
             if(deletedFoodMenu == NULL) {
                 cout << "ID Tidak ditemukan!" << endl;
             } else {
-                //deleteFoodMenu(cateringList, deletedFoodMenu);
+                CateringAddress catering = first(cateringList);
+                while(catering != NULL) {
+                    FoodMenuAddress foodMenu = findFoodMenuInCatering(catering, id);
+                    if(foodMenu != NULL) {
+                        deleteFoodMenuInCatering(catering, foodMenu);
+                    }
+                    catering = next(catering);
+                }
+                
+                deleteFoodMenu(foodMenuList, deletedFoodMenu);
                 cout << "Berhasil menghapus makanan" << endl;
             }
         } else if(menu == 6) {
             showCateringList(cateringList);
         } else if(menu == 7) {
             showFoodMenuList(foodMenuList);
+        } else if(menu == 8) {
+            showCateringListWithFoodMenu(cateringList);
+        } else if(menu == 9) {
+            FoodMenuAddress foodMenu = showHightesOrdered(foodMenuList);
+            
+            if(foodMenu == NULL) {
+                cout << "Data makanan kosong!" << endl;
+            } else {
+                cout << "Makanan terbanyak terjual adalah: " << info(foodMenu).name << endl;
+            }
+            cout << "10. Cari Data Catering" << endl;
+            cout << "11. Cari Data Makanan" << endl;
+            cout << "12. Cari Data Menu Makanan Pada Catering" << endl;
+        } else if(menu == 10) {
+            int id;
+            cout << "Masukkan ID yang dicari: ";
+            cin >> id;
+            cout << id << endl;
+            
+            CateringAddress catering = findCatering(cateringList, id);
+            if(catering == NULL) {
+                cout << "Data tidak ditemukan!" << endl;
+            } else {
+                cout << "Data ditemukan dengan nama: " << info(catering).name << endl;
+            }
+        } else if(menu == 11) {
+            int id;
+            cout << "Masukkan ID yang dicari: ";
+            cin >> id;
+            cout << id << endl;
+            
+            FoodMenuAddress foodMenu = findFoodMenu(foodMenuList, id);
+            if(foodMenu == NULL) {
+                cout << "Data tidak ditemukan!" << endl;
+            } else {
+                cout << "Data ditemukan dengan nama: " << info(foodMenu).name << endl;
+            }
+        } else if(menu == 12) {
+            int id;
+            cout << "Masukkan ID Catering: ";
+            cin >> id;
+            cout << id << endl;
+            
+            CateringAddress catering = findCatering(cateringList, id);
+            if(catering == NULL) {
+                cout << "Data tidak ditemukan!" << endl;
+                continue;
+            }
+            
+            cout << "Masukkan ID Makanan: ";
+            cin >> id;
+            cout << id << endl;
+            
+            FoodMenuAddress foodMenu = findFoodMenuInCatering(catering, id);
+            if(foodMenu == NULL) {
+                cout << "Data tidak ditemukan!" << endl;
+            } else {
+                cout << "Data ditemukan dengan nama: " << info(foodMenu).name << endl;
+            }
+        } else if(menu == 13) {
+            int id;
+            cout << "Masukkan ID Catering: ";
+            cin >> id;
+            cout << id << endl;
+            
+            CateringAddress catering = findCatering(cateringList, id);
+            if(catering == NULL) {
+                cout << "Data tidak ditemukan!" << endl;
+                continue;
+            }
+            
+            int total = getTotalFoodMenuInCatering(catering);
+            cout << "Total menu berjumlah: " << total << endl;
         } else {
             cout << "Menu Tidak ditemukan!" << endl;
         }

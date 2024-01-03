@@ -86,7 +86,7 @@ void deleteFoodMenuInCatering(CateringAddress &catering, FoodMenuAddress &foodMe
 
 CateringAddress findCatering(CateringList list, int id); // 4) Mencari data parent
 FoodMenuAddress findFoodMenu(FoodMenuList list, int id); // 5) Mencari data child
-FoodMenuAddress findFoodMenuInCatering(CateringList list, int foodMenuId); // 9) Mencari data child pada parent tertentu
+FoodMenuAddress findFoodMenuInCatering(CateringAddress catering, int foodMenuId); // 9) Mencari data child pada parent tertentu
 
 int getTotalFoodMenuInCatering(CateringAddress catering); // 11) Menghitung jumlah data child dari parent tertentu
 int getMaxCateringID(CateringList list);

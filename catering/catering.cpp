@@ -68,6 +68,7 @@ void insertFoodMenu(FoodMenuList &list, FoodMenuAddress foodMenu) { // 6) Menamb
     
 void connectCateringToFoodMenu(CateringAddress &catering, FoodMenuAddress &foodMenu) { // 7) Menghubungkan data parent ke data child
     RelationAddress relation = createRelationElement();
+    info(foodMenu).totalOrdered = info(foodMenu).totalOrdered + 1;
     foodMenu(relation) = foodMenu;
     
     if(firstChild(catering) == NULL) {
@@ -83,7 +84,7 @@ void connectCateringToFoodMenu(CateringAddress &catering, FoodMenuAddress &foodM
     
 void deleteCatering(CateringList &list, CateringAddress &catering) { // 3) Menghapus data parent beserta relasinya
     if(first(list) == catering) {
-        first(list) = NULL;
+        first(list) = next(first(list));
     } else {
         CateringAddress iteration = first(list);
         while(next(iteration) != catering) {
@@ -96,19 +97,33 @@ void deleteCatering(CateringList &list, CateringAddress &catering) { // 3) Mengh
 }
 
 void deleteFoodMenu(FoodMenuList &list, FoodMenuAddress &foodMenu) {
-    
-}
-
-void deleteFoodMenuInCatering(CateringAddress &catering, FoodMenuAddress &foodMenu) { // 10) Menghapus data child pada parent tertentu beserta relasinya
-    if(foodMenu(firstChild(catering)) == foodMenu) {
-        firstChild(catering) = NULL;
+    if(first(list) == foodMenu) {
+        first(list) = next(first(list));
     } else {
-        RelationAddress iteration = firstChild(catering);
-        while(foodMenu(next(iteration)) != foodMenu) {
+        FoodMenuAddress iteration = first(list);
+        while(next(iteration) != foodMenu) {
             iteration = next(iteration);
         }
         
         next(iteration) = next(next(iteration));
+    }
+}
+
+void deleteFoodMenuInCatering(CateringAddress &catering, FoodMenuAddress &foodMenu) { // 10) Menghapus data child pada parent tertentu beserta relasinya
+    if(foodMenu(firstChild(catering)) == foodMenu) {
+        firstChild(catering) = next(firstChild(catering));
+    }
+    
+    RelationAddress iteration = firstChild(catering);
+    
+    while(iteration != NULL) {
+        if(next(iteration) != NULL) {
+            if(foodMenu(next(iteration)) == foodMenu) {
+                next(iteration) = next(next(iteration));
+            }
+        }
+        
+        iteration = next(iteration);
     }
 }
     
@@ -150,9 +165,41 @@ FoodMenuAddress findFoodMenu(FoodMenuList list, int id) { // 5) Mencari data chi
     return foodMenu;
 }
 
-FoodMenuAddress findFoodMenuInCatering(CateringList list, string foodMenuId); // 9) Mencari data child pada parent tertentu
+FoodMenuAddress findFoodMenuInCatering(CateringAddress catering, int foodMenuId) { // 9) Mencari data child pada parent tertentu
+    if(firstChild(catering) == NULL) {
+        return NULL;
+    } else if(info(foodMenu(firstChild(catering))).id == foodMenuId) {
+        return foodMenu(firstChild(catering));
+    } else {
+        FoodMenuAddress foodMenu = NULL;
+        RelationAddress iteration = firstChild(catering);
+        while(iteration != NULL) {
+            if(info(foodMenu(iteration)).id == foodMenuId) {
+                foodMenu = foodMenu(iteration);
+            }
+            iteration = next(iteration);
+        }
+        
+        return foodMenu;
+    }
+}
+    
+int getTotalFoodMenuInCatering(CateringAddress catering) { // 11) Menghitung jumlah data child dari parent tertentu
+    int total = 0;
+    
+    if(firstChild(catering) == NULL) {
+        return 0;
+    }
+    
+    RelationAddress iteration = firstChild(catering);
+    while(iteration != NULL) {
+        total = total + 1;
+        iteration = next(iteration);
+    }
+    
+    return total;
+}
 
-int getTotalFoodMenuInCatering(CateringAddress catering); // 11) Menghitung jumlah data child dari parent tertentu
 int getMaxCateringID(CateringList list) {
     if(first(list) == NULL) {
         return 0;
@@ -236,15 +283,14 @@ void showCateringListWithFoodMenu(CateringList list) { // 8) Menampilkan seluruh
             } else {
                 showFoodMenuInRelation(firstChild(cateringIteration));
             }
+            cateringIteration = next(cateringIteration);
         }
-        
-        cout << "============================" << endl;
     }
 }
     
 void showFoodMenuInRelation(RelationAddress relation) {
     while(relation != NULL) {
-        cout << info(foodMenu(relation)).id <<  ") " << info(foodMenu(relation)).name << "[" << info(foodMenu(relation)).totalOrdered << "]" << endl;
+        cout << info(foodMenu(relation)).id <<  ") " << info(foodMenu(relation)).name << endl;
         relation = next(relation);
     }
 }
