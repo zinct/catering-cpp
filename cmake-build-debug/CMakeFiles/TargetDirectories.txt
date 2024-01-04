@@ -1,0 +1,3 @@
+/home/wildanniam/Documents/Kuliah/Tugas Kuliah/Semester 3/STD/tubes/catering-cpp/cmake-build-debug/CMakeFiles/catering_cpp.dir
+/home/wildanniam/Documents/Kuliah/Tugas Kuliah/Semester 3/STD/tubes/catering-cpp/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/wildanniam/Documents/Kuliah/Tugas Kuliah/Semester 3/STD/tubes/catering-cpp/cmake-build-debug/CMakeFiles/rebuild_cache.dir

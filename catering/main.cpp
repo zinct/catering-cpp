@@ -138,9 +138,6 @@ int main() {
             } else {
                 cout << "Makanan terbanyak terjual adalah: " << info(foodMenu).name << endl;
             }
-            cout << "10. Cari Data Catering" << endl;
-            cout << "11. Cari Data Makanan" << endl;
-            cout << "12. Cari Data Menu Makanan Pada Catering" << endl;
         } else if(menu == 10) {
             int id;
             cout << "Masukkan ID yang dicari: ";
