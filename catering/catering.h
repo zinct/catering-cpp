@@ -99,5 +99,7 @@ void showFoodMenuInRelation(RelationAddress relation);
 void showCateringListWithFoodMenu(CateringList list); // 8) Menampilkan seluruh data parent beserta childnya
 
 FoodMenuAddress showHightesOrdered(FoodMenuList list); // Soal studi kasus
+void enterCode();
+
 
 #endif /* catering_h */

@@ -308,6 +308,18 @@ FoodMenuAddress showHightesOrdered(FoodMenuList list) { // Soal studi kasus
         }
         iteration = next(iteration);
     }
+
+    void enterCode();{
+        cout << endl;
+        cout << endl;
+        cout << endl;
+        cout << endl;
+        cout << endl;
+        cout << endl;
+        cout << endl;
+        cout << endl;
+        cout << endl;
+    };
     
     return max;
 }
